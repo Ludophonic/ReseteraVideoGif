@@ -219,8 +219,18 @@ function checkVisibility() {
 	}
 }
 
-window.addEventListener('scroll', checkVisibility, false);
-window.addEventListener('resize', checkVisibility, false);
-window.addEventListener('load', checkVisibility, false);
+var ticking = false;
+function debouncedCheckVisibility() {
+	if( !ticking ) {
+		window.requestAnimationFrame( function() {
+			checkVisibility();
+			ticking = false;
+		});
+	}
+	ticking = true;
+}
 
+window.addEventListener('scroll', debouncedCheckVisibility, false);
+window.addEventListener('resize', debouncedCheckVisibility, false);
+window.addEventListener('load', checkVisibility, false);
 
