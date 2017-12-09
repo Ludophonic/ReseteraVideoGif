@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Popstar</string>
+	<key>Builder Version</key>
+	<string>13604.3.5</string>
+	<key>CFBundleDisplayName</key>
+	<string>ResetEra VideoGIF</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.ludophonic.safari.reseteragif</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>10000</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>global.html</string>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>reseteragif_end.js</string>
+			</array>
+			<key>Start</key>
+			<array>
+				<string>reseteragif_start.js</string>
+			</array>
+		</dict>
+		<key>Stylesheets</key>
+		<array>
+			<string>reseteragif.css</string>
+		</array>
+		<key>Whitelist</key>
+		<array>
+			<string>https://*.resetera.com/*</string>
+		</array>
+	</dict>
+	<key>Description</key>
+	<string>Changes GIF images from supported image hosts to video embeds on ResetEra</string>
+	<key>DeveloperIdentifier</key>
+	<string>ASH4HD6CYY</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>*.resetera.com</string>
+			</array>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>Some</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
