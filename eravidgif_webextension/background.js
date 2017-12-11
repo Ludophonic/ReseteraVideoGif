@@ -28,18 +28,6 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 
 // Remove tabs from list when navigated away from
-/*chrome.webNavigation.onBeforeNavigate.addListener(
-  function(detail) {
-    if( detail.frameId != 0 || !reseteraTabs[detail.tabId] )
-      return;
-
-    delete reseteraTabs[detail.tabId];
-    //console.log("-- tab(" + detail.tabId + "), frame(" +
-    // detail.frameId + " [" + detail.parentFrameId + "]): " + detail.url );
-  }
-);*/
-
-// Remove tabs from list when navigated away from
 chrome.tabs.onUpdated.addListener(
   function(tabId, changeInfo, tab) {
     if( changeInfo.status && (changeInfo.status == "complete") )
@@ -90,12 +78,25 @@ chrome.webRequest.onBeforeRequest.addListener(
 
     var newurl = info.url;
 
-    // gfycat
+    // gfycat (giant.gfycat.com URL scheme)
     var p = info.url.search( "://giant.gfycat.com/" );
     if( p >= 0 )
     {
       var extpos = info.url.lastIndexOf( ".gif" );
       var uniquename = info.url.substring( p+20, extpos );
+      newurl = info.url.substring( 0, p );
+      newurl = newurl + "://thumbs.gfycat.com/" + uniquename + "-poster.jpg";
+    }
+
+    // gfycat (thumbs.gfycat.com URL scheme)
+    var p = info.url.search( "://thumbs.gfycat.com/" );
+    if( p >= 0 )
+    {
+      var extpos = info.url.lastIndexOf( ".gif" );
+      var uniquename = info.url.substring( p+21, extpos );
+      var h = uniquename.search( "-" );
+      if( h >= 0 )
+        uniquename = uniquename.substring( 0, h );
       newurl = info.url.substring( 0, p );
       newurl = newurl + "://thumbs.gfycat.com/" + uniquename + "-poster.jpg";
     }
@@ -138,6 +139,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   {
     urls: [
       "*://giant.gfycat.com/*.gif",
+      "*://thumbs.gfycat.com/*.gif",
       "*://i.imgur.com/*.gif",
       "*://*.giphy.com/media/*/giphy.gif",
       "*://i.giphy.com/*.gif"
