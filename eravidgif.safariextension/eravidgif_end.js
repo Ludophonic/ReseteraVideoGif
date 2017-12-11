@@ -64,16 +64,46 @@ for( var i = allImages.length-1; i >= 0; i-- )
 //	console.log( "found image @ " + image_src );
 
 	// Gfycat
-	var rewrite = image_src.match( "giant.gfycat.com/.*[\.gif]$" );
+	var rewrite = image_src.match( "giant.gfycat.com/.*[\.gif]$" ) ||
+					image_src.match( "thumbs.gfycat.com/.*[\.gif]$" );
+
 	if( rewrite )
 	{
+		var extpos = 0;
+		var uniquename = "";
+		var scheme = "";
+
 		var p = image_src.search( "://giant.gfycat.com/" );
+
 		if( p >= 0 )
 		{
-			var extpos = image_src.lastIndexOf( ".gif" );
-			var uniquename = image_src.substring( p+20, extpos );
+			extpos = image_src.lastIndexOf( ".gif" );
+			uniquename = image_src.substring( p+20, extpos );
+			scheme = image_src.substring( 0, p );
+		}
+		else
+		{
+			p = image_src.search( "://thumbs.gfycat.com/" );
+			if( p >= 0 )
+			{
+				extpos = image_src.lastIndexOf( "-" );
+				if( extpos < 0 )
+				{
+					extpos = image_src.lastIndexOf( ".gif" );
+				}
 
-			var scheme = image_src.substring( 0, p );
+				uniquename = image_src.substring( p+21, extpos );
+				scheme = image_src.substring( 0, p );
+
+				var h = uniquename.search( "-" );
+				if( h >= 0 )
+					uniquename = uniquename.substring( 0, h );
+			}
+		}
+
+		if( p >= 0 )
+		{
+			console.log( "found '" + uniquename + "' @ " + image_src );
 
 			// replace this node with a video element
 			var mp4zippy = document.createElement( "source" );
@@ -95,7 +125,6 @@ for( var i = allImages.length-1; i >= 0; i-- )
 			vid.loop = true;
 			vid.poster = scheme + "://thumbs.gfycat.com/" + uniquename + "-poster.jpg";
 			vid.className = 'eravidgif';
-			vid.addEventListener( 'click', fullVideo, false );
 
 			vid.appendChild( mp4zippy );
 			vid.appendChild( mp4fat );
@@ -125,7 +154,6 @@ for( var i = allImages.length-1; i >= 0; i-- )
 			vid.loop = true;
 			vid.poster = scheme + "://i.imgur.com/" + uniquename + "h.jpg"; // h suffix for 'huge' thumbnail
 			vid.className = 'eravidgif';
-			vid.addEventListener( 'click', fullVideo, false );
 
 			var mp4gifv = document.createElement( "source" );
 			// HACK: always use http because of broken https weirdness on resetera
@@ -189,7 +217,6 @@ for( var i = allImages.length-1; i >= 0; i-- )
 			vid.loop = true;
 			vid.poster = scheme + "://media.giphy.com/media/" + uniquename + "/giphy_s.gif"; // _s suffix for 'still'
 			vid.className = 'eravidgif';
-			vid.addEventListener( 'click', fullVideo, false );
 
 			// Create an image element shared with the poster image so that
 			//	we can fire an onload event and resize

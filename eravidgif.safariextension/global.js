@@ -1,7 +1,7 @@
 var block_rules = [
 	{
 	    "trigger": {
-	        "url-filter": "https?://giant.gfycat.com/[a-z]+.gif$",
+	        "url-filter": "https?://.*\.gfycat.com/[a-z]+.gif$",
 	        "url-filter-is-case-sensitive": "false",
 	        "resource-type": ["image"],
 	        "load-type": ["third-party"]
@@ -96,9 +96,9 @@ function closeHandler(msg) {
 }
 
 
-//enableBlocking();
-//safari.application.addEventListener("beforeNavigate", beforeNavigateHandler, true);
-//safari.application.addEventListener("navigate", navigateHandler, true);
-//safari.application.addEventListener("close", closeHandler, true);
+enableBlocking();
+safari.application.addEventListener("beforeNavigate", beforeNavigateHandler, true);
+safari.application.addEventListener("navigate", navigateHandler, true);
+safari.application.addEventListener("close", closeHandler, true);
 
 console.log("resetera videogif global.js executed!");

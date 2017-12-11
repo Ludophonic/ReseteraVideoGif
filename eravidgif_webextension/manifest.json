@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Resetera VideoGIF",
+  "name": "ResetEra VideoGIF",
   "short_name": "EraVidGIF",
   "description": "Turns GIF images from supported image hosts into video embeds.",
   "version": "1.0.0",
@@ -15,7 +15,7 @@
       "19": "images/eravidgif_icon19.png",
       "38": "images/eravidgif_icon38.png"
     },
-    "default_title": "Resetera VideoGIF"
+    "default_title": "ResetEra VideoGIF"
   },
   "background": {
     "scripts": ["background.js"]
