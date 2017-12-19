@@ -37,6 +37,7 @@ for( var i = allImages.length-1; i >= 0; i-- )
 		var extpos = 0;
 		var uniquename = "";
 		var scheme = "";
+		var usemobile = false;
 
 		var p = image_src.search( "://giant.gfycat.com/" );
 
@@ -56,6 +57,13 @@ for( var i = allImages.length-1; i >= 0; i-- )
 				{
 					extpos = image_src.lastIndexOf( ".gif" );
 				}
+				else
+				{
+					var postfix = image_src.substring( extpos, image_src.length-4 );
+					console.log( "found postfix '" + postfix + "' on " + image_src );
+					if( postfix == "-size_restricted" || postfix == "-small" )
+						usemobile = true;
+				}
 
 				uniquename = image_src.substring( p+21, extpos );
 				scheme = image_src.substring( 0, p );
@@ -71,6 +79,10 @@ for( var i = allImages.length-1; i >= 0; i-- )
 			console.log( "found '" + uniquename + "' @ " + image_src );
 
 			// replace this node with a video element
+			var mp4mobile = document.createElement( "source" );
+			mp4mobile.src = scheme + "://thumbs.gfycat.com/" + uniquename + "-mobile.mp4";
+			mp4mobile.type = "video/mp4";
+
 			var mp4zippy = document.createElement( "source" );
 			mp4zippy.src = scheme + "://zippy.gfycat.com/" + uniquename + ".mp4";
 			mp4zippy.type = "video/mp4";
@@ -88,12 +100,20 @@ for( var i = allImages.length-1; i >= 0; i-- )
 			vid.muted = true;
 			vid.autoplay = false;
 			vid.loop = true;
-			vid.poster = scheme + "://thumbs.gfycat.com/" + uniquename + "-poster.jpg";
 			vid.className = 'eravidgif';
 
-			vid.appendChild( mp4zippy );
-			vid.appendChild( mp4fat );
-			vid.appendChild( mp4giant );
+			if( usemobile )
+			{
+				vid.poster = scheme + "://thumbs.gfycat.com/" + uniquename + "-mobile.jpg";
+				vid.appendChild( mp4mobile );				
+			}
+			else
+			{
+				vid.poster = scheme + "://thumbs.gfycat.com/" + uniquename + "-poster.jpg";
+				vid.appendChild( mp4giant );
+				vid.appendChild( mp4fat );
+				vid.appendChild( mp4zippy );
+			}
 			image.parentNode.replaceChild( vid, image );
 		}
 	}
@@ -262,4 +282,7 @@ function debouncedCheckVisibility() {
 window.addEventListener('scroll', debouncedCheckVisibility, false);
 window.addEventListener('resize', debouncedCheckVisibility, false);
 window.addEventListener('load', checkVisibility, false);
+
+// Will call XenForo.checkQuoteSizing() to add 'click to expand' div on quoted video
+window.dispatchEvent(new Event('resize'));
 
