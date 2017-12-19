@@ -1,1 +1,4 @@
 /* resetera videogif css */
+video.eravidgif {
+    max-width: 100%;
+}
