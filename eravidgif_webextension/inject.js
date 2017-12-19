@@ -1,9 +1,9 @@
-console.log( "running resetera videogif inject.js" );
+// console.log( "running resetera videogif inject.js" );
 
 // fallback for when video not found
 function imgur_fallback( video )
 {
-	console.log( "imgur fallback for video error: " + video.name );
+//	console.log( "imgur fallback for video error: " + video.name );
 
 	var imggif = document.createElement( "img" );
 	imggif.src = scheme + "://i.imgur.com/" + video.name + ".jpg";
@@ -60,7 +60,7 @@ for( var i = allImages.length-1; i >= 0; i-- )
 				else
 				{
 					var postfix = image_src.substring( extpos, image_src.length-4 );
-					console.log( "found postfix '" + postfix + "' on " + image_src );
+//					console.log( "found postfix '" + postfix + "' on " + image_src );
 					if( postfix == "-size_restricted" || postfix == "-small" )
 						usemobile = true;
 				}
@@ -76,7 +76,7 @@ for( var i = allImages.length-1; i >= 0; i-- )
 
 		if( p >= 0 )
 		{
-			console.log( "found '" + uniquename + "' @ " + image_src );
+//			console.log( "found '" + uniquename + "' @ " + image_src );
 
 			// replace this node with a video element
 			var mp4mobile = document.createElement( "source" );
@@ -127,7 +127,7 @@ for( var i = allImages.length-1; i >= 0; i-- )
 		{
 			var extpos = image_src.lastIndexOf( ".gif" );
 			var uniquename = image_src.substring( p+10, extpos );
-			console.log( "found '" + uniquename + "' @ " + image_src );
+//			console.log( "found '" + uniquename + "' @ " + image_src );
 
 			var scheme = image_src.substring( 0, image_src.search(":") );
 
@@ -184,7 +184,7 @@ for( var i = allImages.length-1; i >= 0; i-- )
 		{
 			extpos = image_src.lastIndexOf( ".gif" );
 			uniquename = image_src.substring( p+15, extpos );
-			console.log( "found '" + uniquename + "' @ " + image_src );
+//			console.log( "found '" + uniquename + "' @ " + image_src );
 
 			scheme = image_src.substring( 0, p );
 		}
@@ -195,7 +195,7 @@ for( var i = allImages.length-1; i >= 0; i-- )
 			{
 				extpos = image_src.lastIndexOf( "/giphy.gif" );
 				uniquename = image_src.substring( p+17, extpos );
-				console.log( "found '" + uniquename + "' @ " + image_src );
+//				console.log( "found '" + uniquename + "' @ " + image_src );
 
 				scheme = image_src.substring( 0, image_src.search(":") );
 			}

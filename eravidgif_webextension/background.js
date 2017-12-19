@@ -11,8 +11,8 @@ chrome.webRequest.onBeforeRequest.addListener(
 
     reseteraTabs[info.tabId] = true;
 
-    console.log("++ Restera tab(" + info.tabId + "): " + info.url
-      + " (total: " + Object.keys(reseteraTabs).length + ")");
+//    console.log("++ Restera tab(" + info.tabId + "): " + info.url
+//      + " (total: " + Object.keys(reseteraTabs).length + ")");
 
     return;
   },
@@ -36,8 +36,8 @@ chrome.tabs.onUpdated.addListener(
         return;
 
       delete reseteraTabs[tabId];
-      console.log("-- tab(" + tabId + ") removed <updated> " + " (total: "
-        + Object.keys(reseteraTabs).length + ")");
+//      console.log("-- tab(" + tabId + ") removed <updated> " + " (total: "
+//        + Object.keys(reseteraTabs).length + ")");
     }
   }
 );
@@ -48,8 +48,8 @@ chrome.tabs.onRemoved.addListener(
       return;
 
     delete reseteraTabs[tabId];
-    console.log("-- tab(" + tabId + ") removed <removed> " + " (total: "
-      + Object.keys(reseteraTabs).length + ")");
+//    console.log("-- tab(" + tabId + ") removed <removed> " + " (total: "
+//      + Object.keys(reseteraTabs).length + ")");
   }
 );
 
@@ -59,8 +59,8 @@ chrome.tabs.onReplaced.addListener(
       return;
 
     delete reseteraTabs[removedTabId];
-    console.log("-- tab(" + removedTabId + ") removed <replaced> " + " (total: "
-      + Object.keys(reseteraTabs).length + ")");
+//    console.log("-- tab(" + removedTabId + ") removed <replaced> " + " (total: "
+//      + Object.keys(reseteraTabs).length + ")");
   }
 );
 
@@ -131,7 +131,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       newurl = newurl + "://media.giphy.com/media/" + uniquename + "/giphy_s.gif"; // _s suffix for 'still'
     }
 
-    console.log("Resetera tab(" + info.tabId + ") redirected " + info.url + " to " + newurl );
+//    console.log("Resetera tab(" + info.tabId + ") redirected " + info.url + " to " + newurl );
 
     return {redirectUrl: newurl};
   },
