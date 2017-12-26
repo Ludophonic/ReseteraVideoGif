@@ -9,13 +9,13 @@
 	<key>CFBundleDisplayName</key>
 	<string>ResetEra VideoGIF</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.ludophonic.safari.reseteragif</string>
+	<string>com.ludophonic.safari.eravidgif</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>0.1.0</string>
 	<key>CFBundleVersion</key>
-	<string>10000</string>
+	<string>100</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -63,5 +63,7 @@
 			<string>Some</string>
 		</dict>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>https://github.com/Ludophonic/ReseteraVideoGif/raw/master/build/safari_update.plist</string>
 </dict>
 </plist>
