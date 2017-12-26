@@ -8,7 +8,7 @@ Availability
 ------------
 Chrome pre-built version [available on chrome web store](https://chrome.google.com/webstore/detail/resetera-videogif/ngflmhekplldeikgidmpnnpkjpohcmbe).
 
-Safari pre-build version [available on GitHub](https://github.com/Ludophonic/ReseteraVideoGif/raw/master/build/eravidgif.safariextz).
+Safari pre-built version [available on GitHub](https://github.com/Ludophonic/ReseteraVideoGif/raw/master/build/eravidgif.safariextz).
 
 License
 -------
