@@ -96,7 +96,6 @@ function closeHandler(msg) {
 }
 
 
-enableBlocking();
 safari.application.addEventListener("beforeNavigate", beforeNavigateHandler, true);
 safari.application.addEventListener("navigate", navigateHandler, true);
 safari.application.addEventListener("close", closeHandler, true);
