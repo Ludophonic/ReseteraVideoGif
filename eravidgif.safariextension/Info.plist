@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Popstar</string>
 	<key>Builder Version</key>
-	<string>13604.4.7.1.3</string>
+	<string>13606.2.104.1.2</string>
 	<key>CFBundleDisplayName</key>
 	<string>ResetEra VideoGIF</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.3</string>
+	<string>1.0.4</string>
 	<key>CFBundleVersion</key>
-	<string>10003</string>
+	<string>10004</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>

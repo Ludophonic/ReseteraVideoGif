@@ -4,7 +4,7 @@
   "name": "ResetEra VideoGIF",
   "short_name": "EraVidGIF",
   "description": "Turns GIF images from supported image hosts into video embeds.",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "icons": {
       "16": "images/eravidgif_icon16.png",
       "48": "images/eravidgif_icon48.png",

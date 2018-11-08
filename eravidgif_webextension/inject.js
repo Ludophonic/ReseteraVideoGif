@@ -119,14 +119,14 @@ for( var i = allImages.length-1; i >= 0; i-- )
 	}
 
 	// imgur
-	rewrite = image_src.match( "\\imgur.com/.*(.gif)$" );
+	rewrite = image_src.match( "\\i.imgur.com/.*(.gif)$" );
 	if( rewrite )
 	{
-		var p = image_src.search( "imgur.com/" );
+		var p = image_src.search( "i.imgur.com/" );
 		if( p >= 0 )
 		{
 			var extpos = image_src.lastIndexOf( ".gif" );
-			var uniquename = image_src.substring( p+10, extpos );
+			var uniquename = image_src.substring( p+12, extpos );
 //			console.log( "found '" + uniquename + "' @ " + image_src );
 
 			var scheme = image_src.substring( 0, image_src.search(":") );

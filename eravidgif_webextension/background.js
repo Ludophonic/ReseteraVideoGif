@@ -102,11 +102,11 @@ chrome.webRequest.onBeforeRequest.addListener(
     }
 
     // imgur
-    p = info.url.search( ".imgur.com/" );
+    p = info.url.search( "://i.imgur.com/" );
     if( p >= 0 )
     {
       var extpos = info.url.lastIndexOf( ".gif" );
-      var uniquename = info.url.substring( p+11, extpos );
+      var uniquename = info.url.substring( p+15, extpos );
       newurl = info.url.substring( 0, info.url.search(":") );
       newurl = newurl + "://i.imgur.com/" + uniquename + "h.jpg"; // h suffix for 'huge' thumbnail
     }
